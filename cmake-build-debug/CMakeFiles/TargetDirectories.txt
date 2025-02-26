@@ -1,4 +1,0 @@
-C:/Users/User/CLionProjects/GrpcStoreServer/cmake-build-debug/CMakeFiles/hw_grpc_proto.dir
-C:/Users/User/CLionProjects/GrpcStoreServer/cmake-build-debug/CMakeFiles/server_api.dir
-C:/Users/User/CLionProjects/GrpcStoreServer/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/User/CLionProjects/GrpcStoreServer/cmake-build-debug/CMakeFiles/rebuild_cache.dir

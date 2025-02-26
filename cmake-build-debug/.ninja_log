@@ -1,8 +1,0 @@
-# ninja log v6
-7	577	7622661433546633	build.ninja	f070f60774df90cd
-6833	8180	7621716627051262	your_executable.exe	8e75f6a9b0e3ca7e
-8797	9924	7622654762636850	libhw_grpc_proto.a	da9900a73c645d7a
-28	4505	7622654674957022	CMakeFiles/hw_grpc_proto.dir/protos/store.pb.cc.obj	6091980adc8e12f9
-23	2045	7622656582206270	greeter_server.exe	ecd7437d3a37340e
-22	8797	7622654674896539	CMakeFiles/hw_grpc_proto.dir/protos/store.grpc.pb.cc.obj	69f4d6971d62280
-24	819	7621728392909462	greeter_client.exe	f357e93240ca1b1
