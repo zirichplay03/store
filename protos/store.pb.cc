@@ -145,6 +145,58 @@ struct ProductRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProductRequestDefaultTypeInternal _ProductRequest_default_instance_;
 
+inline constexpr ConfirmOrderResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ConfirmOrderResponse::ConfirmOrderResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ConfirmOrderResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ConfirmOrderResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ConfirmOrderResponseDefaultTypeInternal() {}
+  union {
+    ConfirmOrderResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConfirmOrderResponseDefaultTypeInternal _ConfirmOrderResponse_default_instance_;
+
+inline constexpr ConfirmOrderRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : order_id_{0},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ConfirmOrderRequest::ConfirmOrderRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ConfirmOrderRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ConfirmOrderRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ConfirmOrderRequestDefaultTypeInternal() {}
+  union {
+    ConfirmOrderRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConfirmOrderRequestDefaultTypeInternal _ConfirmOrderRequest_default_instance_;
+
 inline constexpr CheckoutResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : order_id_(
@@ -209,6 +261,9 @@ inline constexpr AuthResponse::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        role_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         _cached_size_{0} {}
@@ -296,7 +351,6 @@ inline constexpr AddToCartRequest::Impl_::Impl_(
       : token_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        user_id_{0},
         product_id_{0},
         quantity_{0},
         _cached_size_{0} {}
@@ -348,6 +402,7 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::store::AuthResponse, _impl_.token_),
         PROTOBUF_FIELD_OFFSET(::store::AuthResponse, _impl_.message_),
+        PROTOBUF_FIELD_OFFSET(::store::AuthResponse, _impl_.role_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::store::RegisterRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -399,7 +454,6 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::store::AddToCartRequest, _impl_.user_id_),
         PROTOBUF_FIELD_OFFSET(::store::AddToCartRequest, _impl_.product_id_),
         PROTOBUF_FIELD_OFFSET(::store::AddToCartRequest, _impl_.quantity_),
         PROTOBUF_FIELD_OFFSET(::store::AddToCartRequest, _impl_.token_),
@@ -433,20 +487,40 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::store::CheckoutResponse, _impl_.order_id_),
         PROTOBUF_FIELD_OFFSET(::store::CheckoutResponse, _impl_.total_price_),
         PROTOBUF_FIELD_OFFSET(::store::CheckoutResponse, _impl_.message_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::store::ConfirmOrderRequest, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::store::ConfirmOrderRequest, _impl_.order_id_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::store::ConfirmOrderResponse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::store::ConfirmOrderResponse, _impl_.message_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::store::AuthRequest)},
         {10, -1, -1, sizeof(::store::AuthResponse)},
-        {20, -1, -1, sizeof(::store::RegisterRequest)},
-        {31, -1, -1, sizeof(::store::RegisterResponse)},
-        {41, -1, -1, sizeof(::store::ProductRequest)},
-        {50, -1, -1, sizeof(::store::ProductResponse)},
-        {63, -1, -1, sizeof(::store::AddToCartRequest)},
+        {21, -1, -1, sizeof(::store::RegisterRequest)},
+        {32, -1, -1, sizeof(::store::RegisterResponse)},
+        {42, -1, -1, sizeof(::store::ProductRequest)},
+        {51, -1, -1, sizeof(::store::ProductResponse)},
+        {64, -1, -1, sizeof(::store::AddToCartRequest)},
         {75, -1, -1, sizeof(::store::AddToCartResponse)},
         {85, -1, -1, sizeof(::store::CheckoutRequest)},
         {94, -1, -1, sizeof(::store::CheckoutResponse)},
+        {105, -1, -1, sizeof(::store::ConfirmOrderRequest)},
+        {114, -1, -1, sizeof(::store::ConfirmOrderResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::store::_AuthRequest_default_instance_._instance,
@@ -459,46 +533,52 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::store::_AddToCartResponse_default_instance_._instance,
     &::store::_CheckoutRequest_default_instance_._instance,
     &::store::_CheckoutResponse_default_instance_._instance,
+    &::store::_ConfirmOrderRequest_default_instance_._instance,
+    &::store::_ConfirmOrderResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_generated_2fstore_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\025generated/store.proto\022\005store\"1\n\013AuthRe"
     "quest\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001("
-    "\t\".\n\014AuthResponse\022\r\n\005token\030\001 \001(\t\022\017\n\007mess"
-    "age\030\002 \001(\t\"D\n\017RegisterRequest\022\020\n\010username"
-    "\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\""
-    "4\n\020RegisterResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007"
-    "message\030\002 \001(\t\"$\n\016ProductRequest\022\022\n\nprodu"
-    "ct_id\030\001 \001(\005\"f\n\017ProductResponse\022\022\n\nproduc"
-    "t_id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030"
-    "\003 \001(\t\022\r\n\005price\030\004 \001(\001\022\r\n\005stock\030\005 \001(\005\"X\n\020A"
-    "ddToCartRequest\022\017\n\007user_id\030\001 \001(\005\022\022\n\nprod"
-    "uct_id\030\002 \001(\005\022\020\n\010quantity\030\003 \001(\005\022\r\n\005token\030"
-    "\004 \001(\t\"5\n\021AddToCartResponse\022\017\n\007message\030\001 "
-    "\001(\t\022\017\n\007success\030\002 \001(\010\" \n\017CheckoutRequest\022"
-    "\r\n\005token\030\001 \001(\t\"J\n\020CheckoutResponse\022\020\n\010or"
-    "der_id\030\001 \001(\t\022\023\n\013total_price\030\002 \001(\001\022\017\n\007mes"
-    "sage\030\003 \001(\t2\302\002\n\014StoreService\0227\n\014Authentic"
-    "ate\022\022.store.AuthRequest\032\023.store.AuthResp"
-    "onse\022\?\n\014RegisterUser\022\026.store.RegisterReq"
-    "uest\032\027.store.RegisterResponse\022;\n\nGetProd"
-    "uct\022\025.store.ProductRequest\032\026.store.Produ"
-    "ctResponse\022>\n\tAddToCart\022\027.store.AddToCar"
-    "tRequest\032\030.store.AddToCartResponse\022;\n\010Ch"
-    "eckout\022\026.store.CheckoutRequest\032\027.store.C"
-    "heckoutResponseb\006proto3"
+    "\t\"<\n\014AuthResponse\022\r\n\005token\030\001 \001(\t\022\017\n\007mess"
+    "age\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\"D\n\017RegisterReque"
+    "st\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\r"
+    "\n\005email\030\003 \001(\t\"4\n\020RegisterResponse\022\017\n\007suc"
+    "cess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"$\n\016ProductRe"
+    "quest\022\022\n\nproduct_id\030\001 \001(\005\"f\n\017ProductResp"
+    "onse\022\022\n\nproduct_id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\023"
+    "\n\013description\030\003 \001(\t\022\r\n\005price\030\004 \001(\001\022\r\n\005st"
+    "ock\030\005 \001(\005\"G\n\020AddToCartRequest\022\022\n\nproduct"
+    "_id\030\001 \001(\005\022\020\n\010quantity\030\002 \001(\005\022\r\n\005token\030\003 \001"
+    "(\t\"5\n\021AddToCartResponse\022\017\n\007message\030\001 \001(\t"
+    "\022\017\n\007success\030\002 \001(\010\" \n\017CheckoutRequest\022\r\n\005"
+    "token\030\001 \001(\t\"J\n\020CheckoutResponse\022\020\n\010order"
+    "_id\030\001 \001(\t\022\023\n\013total_price\030\002 \001(\001\022\017\n\007messag"
+    "e\030\003 \001(\t\"\'\n\023ConfirmOrderRequest\022\020\n\010order_"
+    "id\030\001 \001(\005\"\'\n\024ConfirmOrderResponse\022\017\n\007mess"
+    "age\030\001 \001(\t2\213\003\n\014StoreService\0227\n\014Authentica"
+    "te\022\022.store.AuthRequest\032\023.store.AuthRespo"
+    "nse\022\?\n\014RegisterUser\022\026.store.RegisterRequ"
+    "est\032\027.store.RegisterResponse\022;\n\nGetProdu"
+    "ct\022\025.store.ProductRequest\032\026.store.Produc"
+    "tResponse\022>\n\tAddToCart\022\027.store.AddToCart"
+    "Request\032\030.store.AddToCartResponse\022;\n\010Che"
+    "ckout\022\026.store.CheckoutRequest\032\027.store.Ch"
+    "eckoutResponse\022G\n\014ConfirmOrder\022\032.store.C"
+    "onfirmOrderRequest\032\033.store.ConfirmOrderR"
+    "esponseb\006proto3"
 };
 static ::absl::once_flag descriptor_table_generated_2fstore_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_generated_2fstore_2eproto = {
     false,
     false,
-    983,
+    1135,
     descriptor_table_protodef_generated_2fstore_2eproto,
     "generated/store.proto",
     &descriptor_table_generated_2fstore_2eproto_once,
     nullptr,
     0,
-    10,
+    12,
     schemas,
     file_default_instances,
     TableStruct_generated_2fstore_2eproto::offsets,
@@ -786,6 +866,7 @@ inline PROTOBUF_NDEBUG_INLINE AuthResponse::Impl_::Impl_(
     const Impl_& from, const ::store::AuthResponse& from_msg)
       : token_(arena, from.token_),
         message_(arena, from.message_),
+        role_(arena, from.role_),
         _cached_size_{0} {}
 
 AuthResponse::AuthResponse(
@@ -809,6 +890,7 @@ inline PROTOBUF_NDEBUG_INLINE AuthResponse::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : token_(arena),
         message_(arena),
+        role_(arena),
         _cached_size_{0} {}
 
 inline void AuthResponse::SharedCtor(::_pb::Arena* arena) {
@@ -824,6 +906,7 @@ inline void AuthResponse::SharedDtor(MessageLite& self) {
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.token_.Destroy();
   this_._impl_.message_.Destroy();
+  this_._impl_.role_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -863,15 +946,15 @@ const ::google::protobuf::internal::ClassData* AuthResponse::GetClassData() cons
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 39, 2> AuthResponse::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 43, 2> AuthResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -881,12 +964,16 @@ const ::_pbi::TcParseTable<1, 2, 0, 39, 2> AuthResponse::_table_ = {
     ::_pbi::TcParser::GetTable<::store::AuthResponse>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string message = 2;
-    {::_pbi::TcParser::FastUS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AuthResponse, _impl_.message_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string token = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(AuthResponse, _impl_.token_)}},
+    // string message = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AuthResponse, _impl_.message_)}},
+    // string role = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(AuthResponse, _impl_.role_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -896,13 +983,17 @@ const ::_pbi::TcParseTable<1, 2, 0, 39, 2> AuthResponse::_table_ = {
     // string message = 2;
     {PROTOBUF_FIELD_OFFSET(AuthResponse, _impl_.message_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string role = 3;
+    {PROTOBUF_FIELD_OFFSET(AuthResponse, _impl_.role_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\22\5\7\0\0\0\0\0"
+    "\22\5\7\4\0\0\0\0"
     "store.AuthResponse"
     "token"
     "message"
+    "role"
   }},
 };
 
@@ -915,6 +1006,7 @@ PROTOBUF_NOINLINE void AuthResponse::Clear() {
 
   _impl_.token_.ClearToEmpty();
   _impl_.message_.ClearToEmpty();
+  _impl_.role_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -947,6 +1039,14 @@ PROTOBUF_NOINLINE void AuthResponse::Clear() {
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "store.AuthResponse.message");
             target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // string role = 3;
+          if (!this_._internal_role().empty()) {
+            const std::string& _s = this_._internal_role();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "store.AuthResponse.role");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -984,6 +1084,11 @@ PROTOBUF_NOINLINE void AuthResponse::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_message());
             }
+            // string role = 3;
+            if (!this_._internal_role().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_role());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -1003,6 +1108,9 @@ void AuthResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::go
   if (!from._internal_message().empty()) {
     _this->_internal_set_message(from._internal_message());
   }
+  if (!from._internal_role().empty()) {
+    _this->_internal_set_role(from._internal_role());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1021,6 +1129,7 @@ void AuthResponse::InternalSwap(AuthResponse* PROTOBUF_RESTRICT other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.token_, &other->_impl_.token_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.role_, &other->_impl_.role_, arena);
 }
 
 ::google::protobuf::Metadata AuthResponse::GetMetadata() const {
@@ -2160,11 +2269,11 @@ AddToCartRequest::AddToCartRequest(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, user_id_),
+               offsetof(Impl_, product_id_),
            reinterpret_cast<const char *>(&from._impl_) +
-               offsetof(Impl_, user_id_),
+               offsetof(Impl_, product_id_),
            offsetof(Impl_, quantity_) -
-               offsetof(Impl_, user_id_) +
+               offsetof(Impl_, product_id_) +
                sizeof(Impl_::quantity_));
 
   // @@protoc_insertion_point(copy_constructor:store.AddToCartRequest)
@@ -2178,10 +2287,10 @@ inline PROTOBUF_NDEBUG_INLINE AddToCartRequest::Impl_::Impl_(
 inline void AddToCartRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
   ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, user_id_),
+               offsetof(Impl_, product_id_),
            0,
            offsetof(Impl_, quantity_) -
-               offsetof(Impl_, user_id_) +
+               offsetof(Impl_, product_id_) +
                sizeof(Impl_::quantity_));
 }
 AddToCartRequest::~AddToCartRequest() {
@@ -2232,15 +2341,15 @@ const ::google::protobuf::internal::ClassData* AddToCartRequest::GetClassData() 
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 36, 2> AddToCartRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 0, 36, 2> AddToCartRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    3,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -2250,37 +2359,32 @@ const ::_pbi::TcParseTable<2, 4, 0, 36, 2> AddToCartRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::store::AddToCartRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // string token = 4;
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.token_)}},
-    // int32 user_id = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(AddToCartRequest, _impl_.user_id_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.user_id_)}},
-    // int32 product_id = 2;
+    {::_pbi::TcParser::MiniParse, {}},
+    // int32 product_id = 1;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(AddToCartRequest, _impl_.product_id_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.product_id_)}},
-    // int32 quantity = 3;
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.product_id_)}},
+    // int32 quantity = 2;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(AddToCartRequest, _impl_.quantity_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.quantity_)}},
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.quantity_)}},
+    // string token = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.token_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // int32 user_id = 1;
-    {PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.user_id_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 product_id = 2;
+    // int32 product_id = 1;
     {PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.product_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 quantity = 3;
+    // int32 quantity = 2;
     {PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.quantity_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string token = 4;
+    // string token = 3;
     {PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.token_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\26\0\0\0\5\0\0\0"
+    "\26\0\0\5\0\0\0\0"
     "store.AddToCartRequest"
     "token"
   }},
@@ -2294,9 +2398,9 @@ PROTOBUF_NOINLINE void AddToCartRequest::Clear() {
   (void) cached_has_bits;
 
   _impl_.token_.ClearToEmpty();
-  ::memset(&_impl_.user_id_, 0, static_cast<::size_t>(
+  ::memset(&_impl_.product_id_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.quantity_) -
-      reinterpret_cast<char*>(&_impl_.user_id_)) + sizeof(_impl_.quantity_));
+      reinterpret_cast<char*>(&_impl_.product_id_)) + sizeof(_impl_.quantity_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -2315,33 +2419,26 @@ PROTOBUF_NOINLINE void AddToCartRequest::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // int32 user_id = 1;
-          if (this_._internal_user_id() != 0) {
-            target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<1>(
-                    stream, this_._internal_user_id(), target);
-          }
-
-          // int32 product_id = 2;
+          // int32 product_id = 1;
           if (this_._internal_product_id() != 0) {
             target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<2>(
+                WriteInt32ToArrayWithField<1>(
                     stream, this_._internal_product_id(), target);
           }
 
-          // int32 quantity = 3;
+          // int32 quantity = 2;
           if (this_._internal_quantity() != 0) {
             target = ::google::protobuf::internal::WireFormatLite::
-                WriteInt32ToArrayWithField<3>(
+                WriteInt32ToArrayWithField<2>(
                     stream, this_._internal_quantity(), target);
           }
 
-          // string token = 4;
+          // string token = 3;
           if (!this_._internal_token().empty()) {
             const std::string& _s = this_._internal_token();
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "store.AddToCartRequest.token");
-            target = stream->WriteStringMaybeAliased(4, _s, target);
+            target = stream->WriteStringMaybeAliased(3, _s, target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -2369,22 +2466,17 @@ PROTOBUF_NOINLINE void AddToCartRequest::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // string token = 4;
+            // string token = 3;
             if (!this_._internal_token().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_token());
             }
-            // int32 user_id = 1;
-            if (this_._internal_user_id() != 0) {
-              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-                  this_._internal_user_id());
-            }
-            // int32 product_id = 2;
+            // int32 product_id = 1;
             if (this_._internal_product_id() != 0) {
               total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
                   this_._internal_product_id());
             }
-            // int32 quantity = 3;
+            // int32 quantity = 2;
             if (this_._internal_quantity() != 0) {
               total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
                   this_._internal_quantity());
@@ -2404,9 +2496,6 @@ void AddToCartRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const 
 
   if (!from._internal_token().empty()) {
     _this->_internal_set_token(from._internal_token());
-  }
-  if (from._internal_user_id() != 0) {
-    _this->_impl_.user_id_ = from._impl_.user_id_;
   }
   if (from._internal_product_id() != 0) {
     _this->_impl_.product_id_ = from._impl_.product_id_;
@@ -2434,9 +2523,9 @@ void AddToCartRequest::InternalSwap(AddToCartRequest* PROTOBUF_RESTRICT other) {
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.quantity_)
       + sizeof(AddToCartRequest::_impl_.quantity_)
-      - PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.user_id_)>(
-          reinterpret_cast<char*>(&_impl_.user_id_),
-          reinterpret_cast<char*>(&other->_impl_.user_id_));
+      - PROTOBUF_FIELD_OFFSET(AddToCartRequest, _impl_.product_id_)>(
+          reinterpret_cast<char*>(&_impl_.product_id_),
+          reinterpret_cast<char*>(&other->_impl_.product_id_));
 }
 
 ::google::protobuf::Metadata AddToCartRequest::GetMetadata() const {
@@ -3212,6 +3301,444 @@ void CheckoutResponse::InternalSwap(CheckoutResponse* PROTOBUF_RESTRICT other) {
 }
 
 ::google::protobuf::Metadata CheckoutResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ConfirmOrderRequest::_Internal {
+ public:
+};
+
+ConfirmOrderRequest::ConfirmOrderRequest(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:store.ConfirmOrderRequest)
+}
+ConfirmOrderRequest::ConfirmOrderRequest(
+    ::google::protobuf::Arena* arena, const ConfirmOrderRequest& from)
+    : ConfirmOrderRequest(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE ConfirmOrderRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void ConfirmOrderRequest::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.order_id_ = {};
+}
+ConfirmOrderRequest::~ConfirmOrderRequest() {
+  // @@protoc_insertion_point(destructor:store.ConfirmOrderRequest)
+  SharedDtor(*this);
+}
+inline void ConfirmOrderRequest::SharedDtor(MessageLite& self) {
+  ConfirmOrderRequest& this_ = static_cast<ConfirmOrderRequest&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* ConfirmOrderRequest::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ConfirmOrderRequest(arena);
+}
+constexpr auto ConfirmOrderRequest::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(ConfirmOrderRequest),
+                                            alignof(ConfirmOrderRequest));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ConfirmOrderRequest::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ConfirmOrderRequest_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ConfirmOrderRequest::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ConfirmOrderRequest>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ConfirmOrderRequest::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ConfirmOrderRequest>(), &ConfirmOrderRequest::ByteSizeLong,
+            &ConfirmOrderRequest::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ConfirmOrderRequest, _impl_._cached_size_),
+        false,
+    },
+    &ConfirmOrderRequest::kDescriptorMethods,
+    &descriptor_table_generated_2fstore_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ConfirmOrderRequest::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> ConfirmOrderRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::store::ConfirmOrderRequest>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // int32 order_id = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ConfirmOrderRequest, _impl_.order_id_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ConfirmOrderRequest, _impl_.order_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // int32 order_id = 1;
+    {PROTOBUF_FIELD_OFFSET(ConfirmOrderRequest, _impl_.order_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void ConfirmOrderRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:store.ConfirmOrderRequest)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.order_id_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ConfirmOrderRequest::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ConfirmOrderRequest& this_ = static_cast<const ConfirmOrderRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ConfirmOrderRequest::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ConfirmOrderRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:store.ConfirmOrderRequest)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // int32 order_id = 1;
+          if (this_._internal_order_id() != 0) {
+            target = ::google::protobuf::internal::WireFormatLite::
+                WriteInt32ToArrayWithField<1>(
+                    stream, this_._internal_order_id(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:store.ConfirmOrderRequest)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ConfirmOrderRequest::ByteSizeLong(const MessageLite& base) {
+          const ConfirmOrderRequest& this_ = static_cast<const ConfirmOrderRequest&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ConfirmOrderRequest::ByteSizeLong() const {
+          const ConfirmOrderRequest& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:store.ConfirmOrderRequest)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // int32 order_id = 1;
+            if (this_._internal_order_id() != 0) {
+              total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+                  this_._internal_order_id());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ConfirmOrderRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ConfirmOrderRequest*>(&to_msg);
+  auto& from = static_cast<const ConfirmOrderRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:store.ConfirmOrderRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_order_id() != 0) {
+    _this->_impl_.order_id_ = from._impl_.order_id_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ConfirmOrderRequest::CopyFrom(const ConfirmOrderRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:store.ConfirmOrderRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ConfirmOrderRequest::InternalSwap(ConfirmOrderRequest* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+        swap(_impl_.order_id_, other->_impl_.order_id_);
+}
+
+::google::protobuf::Metadata ConfirmOrderRequest::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ConfirmOrderResponse::_Internal {
+ public:
+};
+
+ConfirmOrderResponse::ConfirmOrderResponse(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:store.ConfirmOrderResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ConfirmOrderResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::store::ConfirmOrderResponse& from_msg)
+      : message_(arena, from.message_),
+        _cached_size_{0} {}
+
+ConfirmOrderResponse::ConfirmOrderResponse(
+    ::google::protobuf::Arena* arena,
+    const ConfirmOrderResponse& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ConfirmOrderResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:store.ConfirmOrderResponse)
+}
+inline PROTOBUF_NDEBUG_INLINE ConfirmOrderResponse::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : message_(arena),
+        _cached_size_{0} {}
+
+inline void ConfirmOrderResponse::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ConfirmOrderResponse::~ConfirmOrderResponse() {
+  // @@protoc_insertion_point(destructor:store.ConfirmOrderResponse)
+  SharedDtor(*this);
+}
+inline void ConfirmOrderResponse::SharedDtor(MessageLite& self) {
+  ConfirmOrderResponse& this_ = static_cast<ConfirmOrderResponse&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.message_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* ConfirmOrderResponse::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ConfirmOrderResponse(arena);
+}
+constexpr auto ConfirmOrderResponse::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ConfirmOrderResponse),
+                                            alignof(ConfirmOrderResponse));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ConfirmOrderResponse::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ConfirmOrderResponse_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ConfirmOrderResponse::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ConfirmOrderResponse>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ConfirmOrderResponse::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ConfirmOrderResponse>(), &ConfirmOrderResponse::ByteSizeLong,
+            &ConfirmOrderResponse::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ConfirmOrderResponse, _impl_._cached_size_),
+        false,
+    },
+    &ConfirmOrderResponse::kDescriptorMethods,
+    &descriptor_table_generated_2fstore_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ConfirmOrderResponse::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 42, 2> ConfirmOrderResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::store::ConfirmOrderResponse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string message = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ConfirmOrderResponse, _impl_.message_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string message = 1;
+    {PROTOBUF_FIELD_OFFSET(ConfirmOrderResponse, _impl_.message_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\32\7\0\0\0\0\0\0"
+    "store.ConfirmOrderResponse"
+    "message"
+  }},
+};
+
+PROTOBUF_NOINLINE void ConfirmOrderResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:store.ConfirmOrderResponse)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.message_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ConfirmOrderResponse::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ConfirmOrderResponse& this_ = static_cast<const ConfirmOrderResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ConfirmOrderResponse::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ConfirmOrderResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:store.ConfirmOrderResponse)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string message = 1;
+          if (!this_._internal_message().empty()) {
+            const std::string& _s = this_._internal_message();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "store.ConfirmOrderResponse.message");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:store.ConfirmOrderResponse)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ConfirmOrderResponse::ByteSizeLong(const MessageLite& base) {
+          const ConfirmOrderResponse& this_ = static_cast<const ConfirmOrderResponse&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ConfirmOrderResponse::ByteSizeLong() const {
+          const ConfirmOrderResponse& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:store.ConfirmOrderResponse)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // string message = 1;
+            if (!this_._internal_message().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_message());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ConfirmOrderResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ConfirmOrderResponse*>(&to_msg);
+  auto& from = static_cast<const ConfirmOrderResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:store.ConfirmOrderResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ConfirmOrderResponse::CopyFrom(const ConfirmOrderResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:store.ConfirmOrderResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ConfirmOrderResponse::InternalSwap(ConfirmOrderResponse* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
+}
+
+::google::protobuf::Metadata ConfirmOrderResponse::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

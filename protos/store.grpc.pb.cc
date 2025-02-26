@@ -27,6 +27,7 @@ static const char* StoreService_method_names[] = {
   "/store.StoreService/GetProduct",
   "/store.StoreService/AddToCart",
   "/store.StoreService/Checkout",
+  "/store.StoreService/ConfirmOrder",
 };
 
 std::unique_ptr< StoreService::Stub> StoreService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -41,6 +42,7 @@ StoreService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_GetProduct_(StoreService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_AddToCart_(StoreService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Checkout_(StoreService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ConfirmOrder_(StoreService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status StoreService::Stub::Authenticate(::grpc::ClientContext* context, const ::store::AuthRequest& request, ::store::AuthResponse* response) {
@@ -158,6 +160,29 @@ void StoreService::Stub::async::Checkout(::grpc::ClientContext* context, const :
   return result;
 }
 
+::grpc::Status StoreService::Stub::ConfirmOrder(::grpc::ClientContext* context, const ::store::ConfirmOrderRequest& request, ::store::ConfirmOrderResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::store::ConfirmOrderRequest, ::store::ConfirmOrderResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ConfirmOrder_, context, request, response);
+}
+
+void StoreService::Stub::async::ConfirmOrder(::grpc::ClientContext* context, const ::store::ConfirmOrderRequest* request, ::store::ConfirmOrderResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::store::ConfirmOrderRequest, ::store::ConfirmOrderResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ConfirmOrder_, context, request, response, std::move(f));
+}
+
+void StoreService::Stub::async::ConfirmOrder(::grpc::ClientContext* context, const ::store::ConfirmOrderRequest* request, ::store::ConfirmOrderResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ConfirmOrder_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::store::ConfirmOrderResponse>* StoreService::Stub::PrepareAsyncConfirmOrderRaw(::grpc::ClientContext* context, const ::store::ConfirmOrderRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::store::ConfirmOrderResponse, ::store::ConfirmOrderRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ConfirmOrder_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::store::ConfirmOrderResponse>* StoreService::Stub::AsyncConfirmOrderRaw(::grpc::ClientContext* context, const ::store::ConfirmOrderRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncConfirmOrderRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 StoreService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       StoreService_method_names[0],
@@ -209,6 +234,16 @@ StoreService::Service::Service() {
              ::store::CheckoutResponse* resp) {
                return service->Checkout(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StoreService_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< StoreService::Service, ::store::ConfirmOrderRequest, ::store::ConfirmOrderResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](StoreService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::store::ConfirmOrderRequest* req,
+             ::store::ConfirmOrderResponse* resp) {
+               return service->ConfirmOrder(ctx, req, resp);
+             }, this)));
 }
 
 StoreService::Service::~Service() {
@@ -243,6 +278,13 @@ StoreService::Service::~Service() {
 }
 
 ::grpc::Status StoreService::Service::Checkout(::grpc::ServerContext* context, const ::store::CheckoutRequest* request, ::store::CheckoutResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StoreService::Service::ConfirmOrder(::grpc::ServerContext* context, const ::store::ConfirmOrderRequest* request, ::store::ConfirmOrderResponse* response) {
   (void) context;
   (void) request;
   (void) response;

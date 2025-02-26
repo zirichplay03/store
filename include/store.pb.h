@@ -70,6 +70,12 @@ extern CheckoutRequestDefaultTypeInternal _CheckoutRequest_default_instance_;
 class CheckoutResponse;
 struct CheckoutResponseDefaultTypeInternal;
 extern CheckoutResponseDefaultTypeInternal _CheckoutResponse_default_instance_;
+class ConfirmOrderRequest;
+struct ConfirmOrderRequestDefaultTypeInternal;
+extern ConfirmOrderRequestDefaultTypeInternal _ConfirmOrderRequest_default_instance_;
+class ConfirmOrderResponse;
+struct ConfirmOrderResponseDefaultTypeInternal;
+extern ConfirmOrderResponseDefaultTypeInternal _ConfirmOrderResponse_default_instance_;
 class ProductRequest;
 struct ProductRequestDefaultTypeInternal;
 extern ProductRequestDefaultTypeInternal _ProductRequest_default_instance_;
@@ -975,6 +981,392 @@ class ProductRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class ConfirmOrderResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:store.ConfirmOrderResponse) */ {
+ public:
+  inline ConfirmOrderResponse() : ConfirmOrderResponse(nullptr) {}
+  ~ConfirmOrderResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ConfirmOrderResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ConfirmOrderResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ConfirmOrderResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ConfirmOrderResponse(const ConfirmOrderResponse& from) : ConfirmOrderResponse(nullptr, from) {}
+  inline ConfirmOrderResponse(ConfirmOrderResponse&& from) noexcept
+      : ConfirmOrderResponse(nullptr, std::move(from)) {}
+  inline ConfirmOrderResponse& operator=(const ConfirmOrderResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConfirmOrderResponse& operator=(ConfirmOrderResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ConfirmOrderResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ConfirmOrderResponse* internal_default_instance() {
+    return reinterpret_cast<const ConfirmOrderResponse*>(
+        &_ConfirmOrderResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 11;
+  friend void swap(ConfirmOrderResponse& a, ConfirmOrderResponse& b) { a.Swap(&b); }
+  inline void Swap(ConfirmOrderResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ConfirmOrderResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ConfirmOrderResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ConfirmOrderResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ConfirmOrderResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ConfirmOrderResponse& from) { ConfirmOrderResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ConfirmOrderResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "store.ConfirmOrderResponse"; }
+
+ protected:
+  explicit ConfirmOrderResponse(::google::protobuf::Arena* arena);
+  ConfirmOrderResponse(::google::protobuf::Arena* arena, const ConfirmOrderResponse& from);
+  ConfirmOrderResponse(::google::protobuf::Arena* arena, ConfirmOrderResponse&& from) noexcept
+      : ConfirmOrderResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kMessageFieldNumber = 1,
+  };
+  // string message = 1;
+  void clear_message() ;
+  const std::string& message() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_message(Arg_&& arg, Args_... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* value);
+
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(
+      const std::string& value);
+  std::string* _internal_mutable_message();
+
+  public:
+  // @@protoc_insertion_point(class_scope:store.ConfirmOrderResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      42, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ConfirmOrderResponse& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr message_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_generated_2fstore_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ConfirmOrderRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:store.ConfirmOrderRequest) */ {
+ public:
+  inline ConfirmOrderRequest() : ConfirmOrderRequest(nullptr) {}
+  ~ConfirmOrderRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ConfirmOrderRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ConfirmOrderRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ConfirmOrderRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ConfirmOrderRequest(const ConfirmOrderRequest& from) : ConfirmOrderRequest(nullptr, from) {}
+  inline ConfirmOrderRequest(ConfirmOrderRequest&& from) noexcept
+      : ConfirmOrderRequest(nullptr, std::move(from)) {}
+  inline ConfirmOrderRequest& operator=(const ConfirmOrderRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConfirmOrderRequest& operator=(ConfirmOrderRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ConfirmOrderRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ConfirmOrderRequest* internal_default_instance() {
+    return reinterpret_cast<const ConfirmOrderRequest*>(
+        &_ConfirmOrderRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 10;
+  friend void swap(ConfirmOrderRequest& a, ConfirmOrderRequest& b) { a.Swap(&b); }
+  inline void Swap(ConfirmOrderRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ConfirmOrderRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ConfirmOrderRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ConfirmOrderRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ConfirmOrderRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ConfirmOrderRequest& from) { ConfirmOrderRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ConfirmOrderRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "store.ConfirmOrderRequest"; }
+
+ protected:
+  explicit ConfirmOrderRequest(::google::protobuf::Arena* arena);
+  ConfirmOrderRequest(::google::protobuf::Arena* arena, const ConfirmOrderRequest& from);
+  ConfirmOrderRequest(::google::protobuf::Arena* arena, ConfirmOrderRequest&& from) noexcept
+      : ConfirmOrderRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kOrderIdFieldNumber = 1,
+  };
+  // int32 order_id = 1;
+  void clear_order_id() ;
+  ::int32_t order_id() const;
+  void set_order_id(::int32_t value);
+
+  private:
+  ::int32_t _internal_order_id() const;
+  void _internal_set_order_id(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:store.ConfirmOrderRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ConfirmOrderRequest& from_msg);
+    ::int32_t order_id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_generated_2fstore_2eproto;
+};
+// -------------------------------------------------------------------
+
 class CheckoutResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:store.CheckoutResponse) */ {
  public:
@@ -1545,6 +1937,7 @@ class AuthResponse final : public ::google::protobuf::Message
   enum : int {
     kTokenFieldNumber = 1,
     kMessageFieldNumber = 2,
+    kRoleFieldNumber = 3,
   };
   // string token = 1;
   void clear_token() ;
@@ -1578,13 +1971,29 @@ class AuthResponse final : public ::google::protobuf::Message
   std::string* _internal_mutable_message();
 
   public:
+  // string role = 3;
+  void clear_role() ;
+  const std::string& role() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_role(Arg_&& arg, Args_... args);
+  std::string* mutable_role();
+  PROTOBUF_NODISCARD std::string* release_role();
+  void set_allocated_role(std::string* value);
+
+  private:
+  const std::string& _internal_role() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_role(
+      const std::string& value);
+  std::string* _internal_mutable_role();
+
+  public:
   // @@protoc_insertion_point(class_scope:store.AuthResponse)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
-      39, 2>
+      2, 3, 0,
+      43, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1603,6 +2012,7 @@ class AuthResponse final : public ::google::protobuf::Message
                           const AuthResponse& from_msg);
     ::google::protobuf::internal::ArenaStringPtr token_;
     ::google::protobuf::internal::ArenaStringPtr message_;
+    ::google::protobuf::internal::ArenaStringPtr role_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -2179,12 +2589,11 @@ class AddToCartRequest final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kTokenFieldNumber = 4,
-    kUserIdFieldNumber = 1,
-    kProductIdFieldNumber = 2,
-    kQuantityFieldNumber = 3,
+    kTokenFieldNumber = 3,
+    kProductIdFieldNumber = 1,
+    kQuantityFieldNumber = 2,
   };
-  // string token = 4;
+  // string token = 3;
   void clear_token() ;
   const std::string& token() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -2200,17 +2609,7 @@ class AddToCartRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_token();
 
   public:
-  // int32 user_id = 1;
-  void clear_user_id() ;
-  ::int32_t user_id() const;
-  void set_user_id(::int32_t value);
-
-  private:
-  ::int32_t _internal_user_id() const;
-  void _internal_set_user_id(::int32_t value);
-
-  public:
-  // int32 product_id = 2;
+  // int32 product_id = 1;
   void clear_product_id() ;
   ::int32_t product_id() const;
   void set_product_id(::int32_t value);
@@ -2220,7 +2619,7 @@ class AddToCartRequest final : public ::google::protobuf::Message
   void _internal_set_product_id(::int32_t value);
 
   public:
-  // int32 quantity = 3;
+  // int32 quantity = 2;
   void clear_quantity() ;
   ::int32_t quantity() const;
   void set_quantity(::int32_t value);
@@ -2235,7 +2634,7 @@ class AddToCartRequest final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 0,
+      2, 3, 0,
       36, 2>
       _table_;
 
@@ -2254,7 +2653,6 @@ class AddToCartRequest final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const AddToCartRequest& from_msg);
     ::google::protobuf::internal::ArenaStringPtr token_;
-    ::int32_t user_id_;
     ::int32_t product_id_;
     ::int32_t quantity_;
     ::google::protobuf::internal::CachedSize _cached_size_;
@@ -2474,6 +2872,54 @@ inline void AuthResponse::set_allocated_message(std::string* value) {
     _impl_.message_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:store.AuthResponse.message)
+}
+
+// string role = 3;
+inline void AuthResponse::clear_role() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.role_.ClearToEmpty();
+}
+inline const std::string& AuthResponse::role() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:store.AuthResponse.role)
+  return _internal_role();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AuthResponse::set_role(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.role_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:store.AuthResponse.role)
+}
+inline std::string* AuthResponse::mutable_role() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_role();
+  // @@protoc_insertion_point(field_mutable:store.AuthResponse.role)
+  return _s;
+}
+inline const std::string& AuthResponse::_internal_role() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.role_.Get();
+}
+inline void AuthResponse::_internal_set_role(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.role_.Set(value, GetArena());
+}
+inline std::string* AuthResponse::_internal_mutable_role() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.role_.Mutable( GetArena());
+}
+inline std::string* AuthResponse::release_role() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:store.AuthResponse.role)
+  return _impl_.role_.Release();
+}
+inline void AuthResponse::set_allocated_role(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.role_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.role_.IsDefault()) {
+    _impl_.role_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:store.AuthResponse.role)
 }
 
 // -------------------------------------------------------------------
@@ -2894,29 +3340,7 @@ inline void ProductResponse::_internal_set_stock(::int32_t value) {
 
 // AddToCartRequest
 
-// int32 user_id = 1;
-inline void AddToCartRequest::clear_user_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.user_id_ = 0;
-}
-inline ::int32_t AddToCartRequest::user_id() const {
-  // @@protoc_insertion_point(field_get:store.AddToCartRequest.user_id)
-  return _internal_user_id();
-}
-inline void AddToCartRequest::set_user_id(::int32_t value) {
-  _internal_set_user_id(value);
-  // @@protoc_insertion_point(field_set:store.AddToCartRequest.user_id)
-}
-inline ::int32_t AddToCartRequest::_internal_user_id() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.user_id_;
-}
-inline void AddToCartRequest::_internal_set_user_id(::int32_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.user_id_ = value;
-}
-
-// int32 product_id = 2;
+// int32 product_id = 1;
 inline void AddToCartRequest::clear_product_id() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.product_id_ = 0;
@@ -2938,7 +3362,7 @@ inline void AddToCartRequest::_internal_set_product_id(::int32_t value) {
   _impl_.product_id_ = value;
 }
 
-// int32 quantity = 3;
+// int32 quantity = 2;
 inline void AddToCartRequest::clear_quantity() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.quantity_ = 0;
@@ -2960,7 +3384,7 @@ inline void AddToCartRequest::_internal_set_quantity(::int32_t value) {
   _impl_.quantity_ = value;
 }
 
-// string token = 4;
+// string token = 3;
 inline void AddToCartRequest::clear_token() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.token_.ClearToEmpty();
@@ -3254,6 +3678,84 @@ inline void CheckoutResponse::set_allocated_message(std::string* value) {
     _impl_.message_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:store.CheckoutResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// ConfirmOrderRequest
+
+// int32 order_id = 1;
+inline void ConfirmOrderRequest::clear_order_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.order_id_ = 0;
+}
+inline ::int32_t ConfirmOrderRequest::order_id() const {
+  // @@protoc_insertion_point(field_get:store.ConfirmOrderRequest.order_id)
+  return _internal_order_id();
+}
+inline void ConfirmOrderRequest::set_order_id(::int32_t value) {
+  _internal_set_order_id(value);
+  // @@protoc_insertion_point(field_set:store.ConfirmOrderRequest.order_id)
+}
+inline ::int32_t ConfirmOrderRequest::_internal_order_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.order_id_;
+}
+inline void ConfirmOrderRequest::_internal_set_order_id(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.order_id_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ConfirmOrderResponse
+
+// string message = 1;
+inline void ConfirmOrderResponse::clear_message() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& ConfirmOrderResponse::message() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:store.ConfirmOrderResponse.message)
+  return _internal_message();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ConfirmOrderResponse::set_message(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.message_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:store.ConfirmOrderResponse.message)
+}
+inline std::string* ConfirmOrderResponse::mutable_message() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:store.ConfirmOrderResponse.message)
+  return _s;
+}
+inline const std::string& ConfirmOrderResponse::_internal_message() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.message_.Get();
+}
+inline void ConfirmOrderResponse::_internal_set_message(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.message_.Set(value, GetArena());
+}
+inline std::string* ConfirmOrderResponse::_internal_mutable_message() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.message_.Mutable( GetArena());
+}
+inline std::string* ConfirmOrderResponse::release_message() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:store.ConfirmOrderResponse.message)
+  return _impl_.message_.Release();
+}
+inline void ConfirmOrderResponse::set_allocated_message(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.message_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.message_.IsDefault()) {
+    _impl_.message_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:store.ConfirmOrderResponse.message)
 }
 
 #ifdef __GNUC__

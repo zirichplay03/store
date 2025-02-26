@@ -1,11 +1,23 @@
--- Создание таблицы пользователей, если она еще не существует
+-- Создание таблицы пользователей
 CREATE TABLE IF NOT EXISTS users (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
-username TEXT NOT NULL UNIQUE,
-password TEXT NOT NULL,
-email TEXT NOT NULL UNIQUE,
-created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                                     username TEXT NOT NULL UNIQUE,
+                                     password TEXT NOT NULL,
+                                     email TEXT NOT NULL UNIQUE,
+                                     role TEXT CHECK(role IN ('buyer', 'seller')) NOT NULL,  -- Роль пользователя
+                                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Создание таблицы заказов
+CREATE TABLE IF NOT EXISTS orders (
+                                      id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                      user_id INTEGER NOT NULL, -- Идентификатор покупателя
+                                      total_price REAL NOT NULL,
+                                      status TEXT DEFAULT 'pending', -- Статус заказа: pending, confirmed, declined
+                                      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                      FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 
 -- Создание таблицы товаров, если она еще не существует
 CREATE TABLE IF NOT EXISTS products (
@@ -26,16 +38,6 @@ quantity INTEGER NOT NULL,
 added_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 FOREIGN KEY (user_id) REFERENCES users(id),
 FOREIGN KEY (product_id) REFERENCES products(id)
-);
-
--- Создание таблицы заказов, если она еще не существует
-CREATE TABLE IF NOT EXISTS orders (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-user_id INTEGER NOT NULL,
-total_price REAL NOT NULL,
-status TEXT DEFAULT 'Pending',
-created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 -- Создание таблицы для товаров в заказах, если она еще не существует

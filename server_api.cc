@@ -57,8 +57,7 @@ class StoreServiceImpl final : public StoreService::Service {
 public:
     // Реализация аутентификации
     Status Authenticate(ServerContext* context, const AuthRequest* request, AuthResponse* response) override {
-        // Пример: Проверка данных в базе
-        std::string sql = "SELECT password FROM users WHERE username = '" + request->username() + "';";
+        std::string sql = "SELECT password, role FROM users WHERE username = '" + request->username() + "';";
         sqlite3_stmt* stmt;
         if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0) != SQLITE_OK) {
             response->set_message("Failed to query database");
@@ -67,9 +66,11 @@ public:
 
         if (sqlite3_step(stmt) == SQLITE_ROW) {
             const char* db_password = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+            const char* role = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
             if (db_password && request->password() == db_password) {
                 response->set_token("dummy_token");  // Возвращаем фейковый токен
                 response->set_message("Authentication successful");
+                response->set_role(role);  // Устанавливаем роль в ответ
                 sqlite3_finalize(stmt);
                 return Status::OK;
             }
@@ -153,16 +154,45 @@ public:
         return Status::OK;
     }
 
+    double CalculateTotalPriceForUser(int32_t user_id) {
+        double total_price = 0.0;
+
+        // Запрос для получения всех товаров в корзине
+        std::string sql = "SELECT p.price, c.quantity FROM carts c "
+                          "JOIN products p ON c.product_id = p.id "
+                          "WHERE c.user_id = " + std::to_string(user_id) + ";";
+
+        sqlite3_stmt* stmt;
+        if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0) != SQLITE_OK) {
+            return total_price; // Если запрос не удался, возвращаем 0
+        }
+
+        while (sqlite3_step(stmt) == SQLITE_ROW) {
+            double price = sqlite3_column_double(stmt, 0);
+            int quantity = sqlite3_column_int(stmt, 1);
+            total_price += price * quantity;
+        }
+
+        sqlite3_finalize(stmt);
+        return total_price;
+    }
+
+
     // Оформление заказа
     Status Checkout(ServerContext* context, const CheckoutRequest* request, CheckoutResponse* response) override {
-        // Получаем user_id из токена
         int32_t user_id = GetUserIdFromToken(request->token());
         if (user_id == -1) {
             response->set_message("Invalid token");
             return Status(grpc::StatusCode::UNAUTHENTICATED, "Invalid token");
         }
 
-        std::string sql = "INSERT INTO orders (user_id, total_price) VALUES (" + std::to_string(user_id) + ", 100.50);";
+        // Рассчитываем общую стоимость
+        double total_price = CalculateTotalPriceForUser(user_id);
+
+        // Создаем заказ
+        std::string sql = "INSERT INTO orders (user_id, total_price, status) VALUES (" +
+                          std::to_string(user_id) + ", " +
+                          std::to_string(total_price) + ", 'pending');";
         sqlite3_stmt* stmt;
         if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0) != SQLITE_OK) {
             response->set_message("Failed to create order");
@@ -173,11 +203,50 @@ public:
             sqlite3_finalize(stmt);
             return Status(grpc::StatusCode::INTERNAL, "Database insert failed");
         }
+
         response->set_order_id("order_12345");
-        response->set_total_price(100.50);
-        response->set_message("Order successfully placed");
+        response->set_total_price(total_price);
+        response->set_message("Order successfully placed, awaiting seller's confirmation");
         sqlite3_finalize(stmt);
         return Status::OK;
+    }
+    // Продавец подтверждает заказ
+    Status ConfirmOrder(ServerContext* context, const store::ConfirmOrderRequest* request, store::ConfirmOrderResponse* response) override {
+        // Проверка роли
+        std::string sql = "SELECT role FROM users WHERE id = (SELECT user_id FROM orders WHERE id = " + std::to_string(request->order_id()) + ");";
+        sqlite3_stmt* stmt;
+        if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, 0) != SQLITE_OK) {
+            response->set_message("Failed to query database");
+            return Status(grpc::StatusCode::INTERNAL, "Database query failed");
+        }
+
+        if (sqlite3_step(stmt) == SQLITE_ROW) {
+            const char* role = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+            if (role && std::string(role) == "seller") {
+                // Продавец подтверждает заказ
+                std::string update_sql = "UPDATE orders SET status = 'confirmed' WHERE id = " + std::to_string(request->order_id()) + ";";
+                sqlite3_stmt* update_stmt;
+                if (sqlite3_prepare_v2(db, update_sql.c_str(), -1, &update_stmt, 0) != SQLITE_OK) {
+                    response->set_message("Failed to confirm order");
+                    return Status(grpc::StatusCode::INTERNAL, "Database update failed");
+                }
+                if (sqlite3_step(update_stmt) != SQLITE_DONE) {
+                    response->set_message("Failed to confirm order");
+                    sqlite3_finalize(update_stmt);
+                    return Status(grpc::StatusCode::INTERNAL, "Database update failed");
+                }
+                response->set_message("Order confirmed");
+                sqlite3_finalize(update_stmt);
+                return Status::OK;
+            } else {
+                response->set_message("Only sellers can confirm orders");
+                sqlite3_finalize(stmt);
+                return Status(grpc::StatusCode::PERMISSION_DENIED, "Permission denied");
+            }
+        }
+        sqlite3_finalize(stmt);
+        response->set_message("Order not found");
+        return Status(grpc::StatusCode::NOT_FOUND, "Order not found");
     }
 };
 
