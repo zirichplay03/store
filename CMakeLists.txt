@@ -73,7 +73,7 @@ endif()
 add_custom_command(
         TARGET server_api POST_BUILD
         COMMAND ${SQLITE3_EXECUTABLE} ${DB_FILE} < ${SQL_SCRIPT}
-        COMMENT "Creating database and tables..."
+        COMMENT "Creating database and tables...."
 )
 
 # Передаем путь к базе данных как макрос в исходный код
