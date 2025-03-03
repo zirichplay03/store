@@ -1,52 +1,99 @@
--- Создание таблицы пользователей
+-- Таблица клиентов (пользователей)
 CREATE TABLE IF NOT EXISTS users (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                     username TEXT NOT NULL UNIQUE,
+                                     id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                     login TEXT UNIQUE NOT NULL,
                                      password TEXT NOT NULL,
-                                     email TEXT NOT NULL UNIQUE,
-                                     role TEXT CHECK(role IN ('buyer', 'seller')) NOT NULL,  -- Роль пользователя
-                                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+                                     full_name TEXT,
+                                     role TEXT DEFAULT 'client'  -- добавляем роль
 );
 
--- Создание таблицы заказов
-CREATE TABLE IF NOT EXISTS orders (
+-- Таблица тренеров
+CREATE TABLE IF NOT EXISTS trainers (
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        login TEXT UNIQUE NOT NULL,
+                                        password TEXT NOT NULL,
+                                        full_name TEXT NOT NULL,
+                                        role TEXT DEFAULT 'trainer'  -- добавляем роль
+);
+
+-- Таблица контактов
+CREATE TABLE IF NOT EXISTS contacts (
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        phone TEXT NOT NULL,
+                                        email TEXT
+);
+
+-- Таблица цен
+CREATE TABLE IF NOT EXISTS prices (
                                       id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                      user_id INTEGER NOT NULL, -- Идентификатор покупателя
-                                      total_price REAL NOT NULL,
-                                      status TEXT DEFAULT 'pending', -- Статус заказа: pending, confirmed, declined
-                                      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                                      FOREIGN KEY (user_id) REFERENCES users(id)
+                                      price TEXT NOT NULL
 );
 
-
--- Создание таблицы товаров, если она еще не существует
-CREATE TABLE IF NOT EXISTS products (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-name TEXT NOT NULL,
-description TEXT,
-price REAL NOT NULL,
-stock INTEGER NOT NULL,
-created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+-- Таблица услуг
+CREATE TABLE IF NOT EXISTS services (
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        name TEXT NOT NULL,
+                                        trainer_id INTEGER,
+                                        contact_id INTEGER,
+                                        price_id INTEGER,
+                                        FOREIGN KEY (trainer_id) REFERENCES trainers(id),
+                                        FOREIGN KEY (contact_id) REFERENCES contacts(id),
+                                        FOREIGN KEY (price_id) REFERENCES prices(id)
 );
 
--- Создание таблицы корзин (каждый пользователь может иметь свою корзину), если она еще не существует
-CREATE TABLE IF NOT EXISTS carts (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-user_id INTEGER NOT NULL,
-product_id INTEGER NOT NULL,
-quantity INTEGER NOT NULL,
-added_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY (user_id) REFERENCES users(id),
-FOREIGN KEY (product_id) REFERENCES products(id)
+-- Таблица расписания для тренеров
+CREATE TABLE IF NOT EXISTS schedule (
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        trainer_id INTEGER,
+                                        time_slot TEXT,  -- Время (например, '11:00-12:00')
+                                        FOREIGN KEY (trainer_id) REFERENCES trainers(id)
 );
 
--- Создание таблицы для товаров в заказах, если она еще не существует
-CREATE TABLE IF NOT EXISTS order_items (
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-order_id INTEGER NOT NULL,
-product_id INTEGER NOT NULL,
-quantity INTEGER NOT NULL,
-price REAL NOT NULL,
-FOREIGN KEY (order_id) REFERENCES orders(id),
-FOREIGN KEY (product_id) REFERENCES products(id)
+-- Таблица записей на тренировки
+CREATE TABLE IF NOT EXISTS bookings (
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        client_id INTEGER,
+                                        trainer_id INTEGER,
+                                        training_time TEXT,  -- Время тренировки
+                                        FOREIGN KEY (client_id) REFERENCES users(id),
+                                        FOREIGN KEY (trainer_id) REFERENCES trainers(id)
 );
+
+-- Заполнение таблицы тренеров
+INSERT INTO trainers (login, password, full_name) VALUES
+                                                      ('trainer_olga', '123', 'Иванова Ольга'),
+                                                      ('trainer_sergey', '123', 'Петров Сергей'),
+                                                      ('trainer_dmitry', '123', 'Сидоров Дмитрий');
+
+-- Заполнение таблицы контактов
+INSERT INTO contacts (phone, email) VALUES
+                                        ('+7 900 123-45-67', 'yoga@runhall.ru'),
+                                        ('+7 901 456-78-90', 'ft@runhall.ru'),
+                                        ('+7 902 333-44-55', 'personal@runhall.ru');
+
+-- Заполнение таблицы цен
+INSERT INTO prices (price) VALUES
+                               ('1500 руб'),
+                               ('2000 руб'),
+                               ('2500 руб');
+
+-- Заполнение таблицы услуг
+INSERT INTO services (name, trainer_id, contact_id, price_id) VALUES
+                                                                  ('Йога', 1, 1, 1),
+                                                                  ('Функциональный тренинг', 2, 2, 2),
+                                                                  ('Персональная тренировка', 3, 3, 3);
+
+-- Заполнение таблицы клиентов
+INSERT INTO users (login, password, full_name) VALUES
+                                                   ('client_ivan', '123', 'Иван Иванов'),
+                                                   ('client_maria', '123', 'Мария Кузнецова'),
+                                                   ('client_egor', '123', 'Егор Смирнов');
+
+-- Заполнение таблицы расписания тренеров
+INSERT INTO schedule (trainer_id, time_slot) VALUES
+                                                 (1, '11:00-12:00'),
+                                                 (1, '14:00-15:00'),
+                                                 (2, '10:00-11:00'),
+                                                 (2, '15:00-16:00'),
+                                                 (3, '12:00-13:00'),
+                                                 (3, '16:00-17:00');
