@@ -59,6 +59,9 @@ extern BalanceRequestDefaultTypeInternal _BalanceRequest_default_instance_;
 class BalanceResponse;
 struct BalanceResponseDefaultTypeInternal;
 extern BalanceResponseDefaultTypeInternal _BalanceResponse_default_instance_;
+class ClientInfo;
+struct ClientInfoDefaultTypeInternal;
+extern ClientInfoDefaultTypeInternal _ClientInfo_default_instance_;
 class Contact;
 struct ContactDefaultTypeInternal;
 extern ContactDefaultTypeInternal _Contact_default_instance_;
@@ -188,7 +191,7 @@ class TrainingBookingResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const TrainingBookingResponse*>(
         &_TrainingBookingResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 18;
+  static constexpr int kIndexInFileMessages = 19;
   friend void swap(TrainingBookingResponse& a, TrainingBookingResponse& b) { a.Swap(&b); }
   inline void Swap(TrainingBookingResponse* other) {
     if (other == this) return;
@@ -396,7 +399,7 @@ class TrainingBookingRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const TrainingBookingRequest*>(
         &_TrainingBookingRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 18;
   friend void swap(TrainingBookingRequest& a, TrainingBookingRequest& b) { a.Swap(&b); }
   inline void Swap(TrainingBookingRequest* other) {
     if (other == this) return;
@@ -959,208 +962,6 @@ class TrainerScheduleRequest final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const TrainerScheduleRequest& from_msg);
     ::google::protobuf::internal::ArenaStringPtr trainer_name_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_store_2eproto;
-};
-// -------------------------------------------------------------------
-
-class TrainerClientsResponse final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:fitness.TrainerClientsResponse) */ {
- public:
-  inline TrainerClientsResponse() : TrainerClientsResponse(nullptr) {}
-  ~TrainerClientsResponse() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(TrainerClientsResponse* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(TrainerClientsResponse));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR TrainerClientsResponse(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline TrainerClientsResponse(const TrainerClientsResponse& from) : TrainerClientsResponse(nullptr, from) {}
-  inline TrainerClientsResponse(TrainerClientsResponse&& from) noexcept
-      : TrainerClientsResponse(nullptr, std::move(from)) {}
-  inline TrainerClientsResponse& operator=(const TrainerClientsResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline TrainerClientsResponse& operator=(TrainerClientsResponse&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const TrainerClientsResponse& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const TrainerClientsResponse* internal_default_instance() {
-    return reinterpret_cast<const TrainerClientsResponse*>(
-        &_TrainerClientsResponse_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 16;
-  friend void swap(TrainerClientsResponse& a, TrainerClientsResponse& b) { a.Swap(&b); }
-  inline void Swap(TrainerClientsResponse* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(TrainerClientsResponse* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  TrainerClientsResponse* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<TrainerClientsResponse>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const TrainerClientsResponse& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const TrainerClientsResponse& from) { TrainerClientsResponse::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(TrainerClientsResponse* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "fitness.TrainerClientsResponse"; }
-
- protected:
-  explicit TrainerClientsResponse(::google::protobuf::Arena* arena);
-  TrainerClientsResponse(::google::protobuf::Arena* arena, const TrainerClientsResponse& from);
-  TrainerClientsResponse(::google::protobuf::Arena* arena, TrainerClientsResponse&& from) noexcept
-      : TrainerClientsResponse(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kClientsFieldNumber = 1,
-  };
-  // repeated string clients = 1;
-  int clients_size() const;
-  private:
-  int _internal_clients_size() const;
-
-  public:
-  void clear_clients() ;
-  const std::string& clients(int index) const;
-  std::string* mutable_clients(int index);
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_clients(int index, Arg_&& value, Args_... args);
-  std::string* add_clients();
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void add_clients(Arg_&& value, Args_... args);
-  const ::google::protobuf::RepeatedPtrField<std::string>& clients() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* mutable_clients();
-
-  private:
-  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_clients() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_clients();
-
-  public:
-  // @@protoc_insertion_point(class_scope:fitness.TrainerClientsResponse)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 0,
-      46, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const TrainerClientsResponse& from_msg);
-    ::google::protobuf::RepeatedPtrField<std::string> clients_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -3246,6 +3047,220 @@ class Contact final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class ClientInfo final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:fitness.ClientInfo) */ {
+ public:
+  inline ClientInfo() : ClientInfo(nullptr) {}
+  ~ClientInfo() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ClientInfo* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ClientInfo));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ClientInfo(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ClientInfo(const ClientInfo& from) : ClientInfo(nullptr, from) {}
+  inline ClientInfo(ClientInfo&& from) noexcept
+      : ClientInfo(nullptr, std::move(from)) {}
+  inline ClientInfo& operator=(const ClientInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ClientInfo& operator=(ClientInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ClientInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ClientInfo* internal_default_instance() {
+    return reinterpret_cast<const ClientInfo*>(
+        &_ClientInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 17;
+  friend void swap(ClientInfo& a, ClientInfo& b) { a.Swap(&b); }
+  inline void Swap(ClientInfo* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ClientInfo* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ClientInfo* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ClientInfo>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ClientInfo& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ClientInfo& from) { ClientInfo::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ClientInfo* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "fitness.ClientInfo"; }
+
+ protected:
+  explicit ClientInfo(::google::protobuf::Arena* arena);
+  ClientInfo(::google::protobuf::Arena* arena, const ClientInfo& from);
+  ClientInfo(::google::protobuf::Arena* arena, ClientInfo&& from) noexcept
+      : ClientInfo(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kClientNameFieldNumber = 1,
+    kTrainingTimeFieldNumber = 2,
+  };
+  // string client_name = 1;
+  void clear_client_name() ;
+  const std::string& client_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_client_name(Arg_&& arg, Args_... args);
+  std::string* mutable_client_name();
+  PROTOBUF_NODISCARD std::string* release_client_name();
+  void set_allocated_client_name(std::string* value);
+
+  private:
+  const std::string& _internal_client_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_client_name(
+      const std::string& value);
+  std::string* _internal_mutable_client_name();
+
+  public:
+  // string training_time = 2;
+  void clear_training_time() ;
+  const std::string& training_time() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_training_time(Arg_&& arg, Args_... args);
+  std::string* mutable_training_time();
+  PROTOBUF_NODISCARD std::string* release_training_time();
+  void set_allocated_training_time(std::string* value);
+
+  private:
+  const std::string& _internal_training_time() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_training_time(
+      const std::string& value);
+  std::string* _internal_mutable_training_time();
+
+  public:
+  // @@protoc_insertion_point(class_scope:fitness.ClientInfo)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      51, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ClientInfo& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr client_name_;
+    ::google::protobuf::internal::ArenaStringPtr training_time_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_store_2eproto;
+};
+// -------------------------------------------------------------------
+
 class BalanceResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:fitness.BalanceResponse) */ {
  public:
@@ -3305,7 +3320,7 @@ class BalanceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const BalanceResponse*>(
         &_BalanceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(BalanceResponse& a, BalanceResponse& b) { a.Swap(&b); }
   inline void Swap(BalanceResponse* other) {
     if (other == this) return;
@@ -3507,7 +3522,7 @@ class BalanceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const BalanceRequest*>(
         &_BalanceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(BalanceRequest& a, BalanceRequest& b) { a.Swap(&b); }
   inline void Swap(BalanceRequest* other) {
     if (other == this) return;
@@ -3845,6 +3860,203 @@ class TrainerList final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const TrainerList& from_msg);
     ::google::protobuf::RepeatedPtrField< ::fitness::Trainer > trainers_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_store_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TrainerClientsResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:fitness.TrainerClientsResponse) */ {
+ public:
+  inline TrainerClientsResponse() : TrainerClientsResponse(nullptr) {}
+  ~TrainerClientsResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(TrainerClientsResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(TrainerClientsResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR TrainerClientsResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline TrainerClientsResponse(const TrainerClientsResponse& from) : TrainerClientsResponse(nullptr, from) {}
+  inline TrainerClientsResponse(TrainerClientsResponse&& from) noexcept
+      : TrainerClientsResponse(nullptr, std::move(from)) {}
+  inline TrainerClientsResponse& operator=(const TrainerClientsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TrainerClientsResponse& operator=(TrainerClientsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TrainerClientsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TrainerClientsResponse* internal_default_instance() {
+    return reinterpret_cast<const TrainerClientsResponse*>(
+        &_TrainerClientsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 16;
+  friend void swap(TrainerClientsResponse& a, TrainerClientsResponse& b) { a.Swap(&b); }
+  inline void Swap(TrainerClientsResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TrainerClientsResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TrainerClientsResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<TrainerClientsResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const TrainerClientsResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const TrainerClientsResponse& from) { TrainerClientsResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(TrainerClientsResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "fitness.TrainerClientsResponse"; }
+
+ protected:
+  explicit TrainerClientsResponse(::google::protobuf::Arena* arena);
+  TrainerClientsResponse(::google::protobuf::Arena* arena, const TrainerClientsResponse& from);
+  TrainerClientsResponse(::google::protobuf::Arena* arena, TrainerClientsResponse&& from) noexcept
+      : TrainerClientsResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kClientsFieldNumber = 1,
+  };
+  // repeated .fitness.ClientInfo clients = 1;
+  int clients_size() const;
+  private:
+  int _internal_clients_size() const;
+
+  public:
+  void clear_clients() ;
+  ::fitness::ClientInfo* mutable_clients(int index);
+  ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>* mutable_clients();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>& _internal_clients() const;
+  ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>* _internal_mutable_clients();
+  public:
+  const ::fitness::ClientInfo& clients(int index) const;
+  ::fitness::ClientInfo* add_clients();
+  const ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>& clients() const;
+  // @@protoc_insertion_point(class_scope:fitness.TrainerClientsResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const TrainerClientsResponse& from_msg);
+    ::google::protobuf::RepeatedPtrField< ::fitness::ClientInfo > clients_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -5691,7 +5903,7 @@ inline void TrainerClientsRequest::set_allocated_trainer_name(std::string* value
 
 // TrainerClientsResponse
 
-// repeated string clients = 1;
+// repeated .fitness.ClientInfo clients = 1;
 inline int TrainerClientsResponse::_internal_clients_size() const {
   return _internal_clients().size();
 }
@@ -5702,57 +5914,142 @@ inline void TrainerClientsResponse::clear_clients() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.clients_.Clear();
 }
-inline std::string* TrainerClientsResponse::add_clients() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  std::string* _s = _internal_mutable_clients()->Add();
-  // @@protoc_insertion_point(field_add_mutable:fitness.TrainerClientsResponse.clients)
-  return _s;
-}
-inline const std::string& TrainerClientsResponse::clients(int index) const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:fitness.TrainerClientsResponse.clients)
-  return _internal_clients().Get(index);
-}
-inline std::string* TrainerClientsResponse::mutable_clients(int index)
+inline ::fitness::ClientInfo* TrainerClientsResponse::mutable_clients(int index)
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_mutable:fitness.TrainerClientsResponse.clients)
   return _internal_mutable_clients()->Mutable(index);
 }
-template <typename Arg_, typename... Args_>
-inline void TrainerClientsResponse::set_clients(int index, Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::AssignToString(
-      *_internal_mutable_clients()->Mutable(index),
-      std::forward<Arg_>(value), args... );
-  // @@protoc_insertion_point(field_set:fitness.TrainerClientsResponse.clients)
-}
-template <typename Arg_, typename... Args_>
-inline void TrainerClientsResponse::add_clients(Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_clients(),
-                               std::forward<Arg_>(value),
-                               args... );
-  // @@protoc_insertion_point(field_add:fitness.TrainerClientsResponse.clients)
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-TrainerClientsResponse::clients() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:fitness.TrainerClientsResponse.clients)
-  return _internal_clients();
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-TrainerClientsResponse::mutable_clients() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>* TrainerClientsResponse::mutable_clients()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_mutable_list:fitness.TrainerClientsResponse.clients)
   ::google::protobuf::internal::TSanWrite(&_impl_);
   return _internal_mutable_clients();
 }
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
+inline const ::fitness::ClientInfo& TrainerClientsResponse::clients(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:fitness.TrainerClientsResponse.clients)
+  return _internal_clients().Get(index);
+}
+inline ::fitness::ClientInfo* TrainerClientsResponse::add_clients() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::fitness::ClientInfo* _add = _internal_mutable_clients()->Add();
+  // @@protoc_insertion_point(field_add:fitness.TrainerClientsResponse.clients)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>& TrainerClientsResponse::clients() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:fitness.TrainerClientsResponse.clients)
+  return _internal_clients();
+}
+inline const ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>&
 TrainerClientsResponse::_internal_clients() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return _impl_.clients_;
 }
-inline ::google::protobuf::RepeatedPtrField<std::string>*
+inline ::google::protobuf::RepeatedPtrField<::fitness::ClientInfo>*
 TrainerClientsResponse::_internal_mutable_clients() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.clients_;
+}
+
+// -------------------------------------------------------------------
+
+// ClientInfo
+
+// string client_name = 1;
+inline void ClientInfo::clear_client_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.client_name_.ClearToEmpty();
+}
+inline const std::string& ClientInfo::client_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:fitness.ClientInfo.client_name)
+  return _internal_client_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ClientInfo::set_client_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.client_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:fitness.ClientInfo.client_name)
+}
+inline std::string* ClientInfo::mutable_client_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_client_name();
+  // @@protoc_insertion_point(field_mutable:fitness.ClientInfo.client_name)
+  return _s;
+}
+inline const std::string& ClientInfo::_internal_client_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.client_name_.Get();
+}
+inline void ClientInfo::_internal_set_client_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.client_name_.Set(value, GetArena());
+}
+inline std::string* ClientInfo::_internal_mutable_client_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.client_name_.Mutable( GetArena());
+}
+inline std::string* ClientInfo::release_client_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:fitness.ClientInfo.client_name)
+  return _impl_.client_name_.Release();
+}
+inline void ClientInfo::set_allocated_client_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.client_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.client_name_.IsDefault()) {
+    _impl_.client_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:fitness.ClientInfo.client_name)
+}
+
+// string training_time = 2;
+inline void ClientInfo::clear_training_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.training_time_.ClearToEmpty();
+}
+inline const std::string& ClientInfo::training_time() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:fitness.ClientInfo.training_time)
+  return _internal_training_time();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ClientInfo::set_training_time(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.training_time_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:fitness.ClientInfo.training_time)
+}
+inline std::string* ClientInfo::mutable_training_time() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_training_time();
+  // @@protoc_insertion_point(field_mutable:fitness.ClientInfo.training_time)
+  return _s;
+}
+inline const std::string& ClientInfo::_internal_training_time() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.training_time_.Get();
+}
+inline void ClientInfo::_internal_set_training_time(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.training_time_.Set(value, GetArena());
+}
+inline std::string* ClientInfo::_internal_mutable_training_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.training_time_.Mutable( GetArena());
+}
+inline std::string* ClientInfo::release_training_time() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:fitness.ClientInfo.training_time)
+  return _impl_.training_time_.Release();
+}
+inline void ClientInfo::set_allocated_training_time(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.training_time_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.training_time_.IsDefault()) {
+    _impl_.training_time_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:fitness.ClientInfo.training_time)
 }
 
 // -------------------------------------------------------------------

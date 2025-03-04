@@ -139,31 +139,6 @@ struct TrainerScheduleRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TrainerScheduleRequestDefaultTypeInternal _TrainerScheduleRequest_default_instance_;
 
-inline constexpr TrainerClientsResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : clients_{},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR TrainerClientsResponse::TrainerClientsResponse(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct TrainerClientsResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TrainerClientsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TrainerClientsResponseDefaultTypeInternal() {}
-  union {
-    TrainerClientsResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TrainerClientsResponseDefaultTypeInternal _TrainerClientsResponse_default_instance_;
-
 inline constexpr TrainerClientsRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : trainer_name_(
@@ -451,6 +426,36 @@ struct ContactDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ContactDefaultTypeInternal _Contact_default_instance_;
 
+inline constexpr ClientInfo::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : client_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        training_time_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR ClientInfo::ClientInfo(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ClientInfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ClientInfoDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ClientInfoDefaultTypeInternal() {}
+  union {
+    ClientInfo _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ClientInfoDefaultTypeInternal _ClientInfo_default_instance_;
+
 inline constexpr BalanceResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : success_{false},
@@ -529,6 +534,31 @@ struct TrainerListDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TrainerListDefaultTypeInternal _TrainerList_default_instance_;
+
+inline constexpr TrainerClientsResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : clients_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR TrainerClientsResponse::TrainerClientsResponse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct TrainerClientsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TrainerClientsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TrainerClientsResponseDefaultTypeInternal() {}
+  union {
+    TrainerClientsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TrainerClientsResponseDefaultTypeInternal _TrainerClientsResponse_default_instance_;
 
 inline constexpr ServiceList::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -775,6 +805,16 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::fitness::TrainerClientsResponse, _impl_.clients_),
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::fitness::ClientInfo, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::fitness::ClientInfo, _impl_.client_name_),
+        PROTOBUF_FIELD_OFFSET(::fitness::ClientInfo, _impl_.training_time_),
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::fitness::TrainingBookingRequest, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -836,10 +876,11 @@ static const ::_pbi::MigrationSchema
         {135, -1, -1, sizeof(::fitness::TrainerScheduleResponse)},
         {144, -1, -1, sizeof(::fitness::TrainerClientsRequest)},
         {153, -1, -1, sizeof(::fitness::TrainerClientsResponse)},
-        {162, -1, -1, sizeof(::fitness::TrainingBookingRequest)},
-        {173, -1, -1, sizeof(::fitness::TrainingBookingResponse)},
-        {183, -1, -1, sizeof(::fitness::BalanceRequest)},
-        {193, -1, -1, sizeof(::fitness::BalanceResponse)},
+        {162, -1, -1, sizeof(::fitness::ClientInfo)},
+        {172, -1, -1, sizeof(::fitness::TrainingBookingRequest)},
+        {183, -1, -1, sizeof(::fitness::TrainingBookingResponse)},
+        {193, -1, -1, sizeof(::fitness::BalanceRequest)},
+        {203, -1, -1, sizeof(::fitness::BalanceResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::fitness::_Empty_default_instance_._instance,
@@ -859,6 +900,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::fitness::_TrainerScheduleResponse_default_instance_._instance,
     &::fitness::_TrainerClientsRequest_default_instance_._instance,
     &::fitness::_TrainerClientsResponse_default_instance_._instance,
+    &::fitness::_ClientInfo_default_instance_._instance,
     &::fitness::_TrainingBookingRequest_default_instance_._instance,
     &::fitness::_TrainingBookingResponse_default_instance_._instance,
     &::fitness::_BalanceRequest_default_instance_._instance,
@@ -885,44 +927,46 @@ const char descriptor_table_protodef_store_2eproto[] ABSL_ATTRIBUTE_SECTION_VARI
     "ainerScheduleRequest\022\024\n\014trainer_name\030\001 \001"
     "(\t\"+\n\027TrainerScheduleResponse\022\020\n\010schedul"
     "e\030\001 \003(\t\"-\n\025TrainerClientsRequest\022\024\n\014trai"
-    "ner_name\030\001 \001(\t\")\n\026TrainerClientsResponse"
-    "\022\017\n\007clients\030\001 \003(\t\"Z\n\026TrainingBookingRequ"
-    "est\022\024\n\014trainer_name\030\001 \001(\t\022\023\n\013client_name"
-    "\030\002 \001(\t\022\025\n\rtraining_time\030\003 \001(\t\";\n\027Trainin"
-    "gBookingResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007mes"
-    "sage\030\002 \001(\t\"5\n\016BalanceRequest\022\023\n\013client_n"
-    "ame\030\001 \001(\t\022\016\n\006amount\030\002 \001(\002\"7\n\017BalanceResp"
-    "onse\022\017\n\007success\030\001 \001(\010\022\023\n\013new_balance\030\002 \001"
-    "(\0022\244\005\n\016FitnessService\0223\n\013GetServices\022\016.f"
-    "itness.Empty\032\024.fitness.ServiceList\022:\n\tLo"
-    "ginUser\022\025.fitness.LoginRequest\032\026.fitness"
-    ".LoginResponse\022C\n\014RegisterUser\022\030.fitness"
-    ".RegisterRequest\032\031.fitness.RegisterRespo"
-    "nse\0223\n\013GetTrainers\022\016.fitness.Empty\032\024.fit"
-    "ness.TrainerList\022W\n\022GetTrainerSchedule\022\037"
-    ".fitness.TrainerScheduleRequest\032 .fitnes"
-    "s.TrainerScheduleResponse\022T\n\021GetTrainerC"
-    "lients\022\036.fitness.TrainerClientsRequest\032\037"
-    ".fitness.TrainerClientsResponse\0223\n\013GetCo"
-    "ntacts\022\016.fitness.Empty\032\024.fitness.Contact"
-    "List\022/\n\tGetPrices\022\016.fitness.Empty\032\022.fitn"
-    "ess.PriceList\022Q\n\014BookTraining\022\037.fitness."
-    "TrainingBookingRequest\032 .fitness.Trainin"
-    "gBookingResponse\022\?\n\nAddBalance\022\027.fitness"
-    ".BalanceRequest\032\030.fitness.BalanceRespons"
-    "eb\006proto3"
+    "ner_name\030\001 \001(\t\">\n\026TrainerClientsResponse"
+    "\022$\n\007clients\030\001 \003(\0132\023.fitness.ClientInfo\"8"
+    "\n\nClientInfo\022\023\n\013client_name\030\001 \001(\t\022\025\n\rtra"
+    "ining_time\030\002 \001(\t\"Z\n\026TrainingBookingReque"
+    "st\022\024\n\014trainer_name\030\001 \001(\t\022\023\n\013client_name\030"
+    "\002 \001(\t\022\025\n\rtraining_time\030\003 \001(\t\";\n\027Training"
+    "BookingResponse\022\017\n\007success\030\001 \001(\010\022\017\n\007mess"
+    "age\030\002 \001(\t\"5\n\016BalanceRequest\022\023\n\013client_na"
+    "me\030\001 \001(\t\022\016\n\006amount\030\002 \001(\002\"7\n\017BalanceRespo"
+    "nse\022\017\n\007success\030\001 \001(\010\022\023\n\013new_balance\030\002 \001("
+    "\0022\244\005\n\016FitnessService\0223\n\013GetServices\022\016.fi"
+    "tness.Empty\032\024.fitness.ServiceList\022:\n\tLog"
+    "inUser\022\025.fitness.LoginRequest\032\026.fitness."
+    "LoginResponse\022C\n\014RegisterUser\022\030.fitness."
+    "RegisterRequest\032\031.fitness.RegisterRespon"
+    "se\0223\n\013GetTrainers\022\016.fitness.Empty\032\024.fitn"
+    "ess.TrainerList\022W\n\022GetTrainerSchedule\022\037."
+    "fitness.TrainerScheduleRequest\032 .fitness"
+    ".TrainerScheduleResponse\022T\n\021GetTrainerCl"
+    "ients\022\036.fitness.TrainerClientsRequest\032\037."
+    "fitness.TrainerClientsResponse\0223\n\013GetCon"
+    "tacts\022\016.fitness.Empty\032\024.fitness.ContactL"
+    "ist\022/\n\tGetPrices\022\016.fitness.Empty\032\022.fitne"
+    "ss.PriceList\022Q\n\014BookTraining\022\037.fitness.T"
+    "rainingBookingRequest\032 .fitness.Training"
+    "BookingResponse\022\?\n\nAddBalance\022\027.fitness."
+    "BalanceRequest\032\030.fitness.BalanceResponse"
+    "b\006proto3"
 };
 static ::absl::once_flag descriptor_table_store_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_store_2eproto = {
     false,
     false,
-    1769,
+    1848,
     descriptor_table_protodef_store_2eproto,
     "store.proto",
     &descriptor_table_store_2eproto_once,
     nullptr,
     0,
-    21,
+    22,
     schemas,
     file_default_instances,
     TableStruct_store_2eproto::offsets,
@@ -4939,7 +4983,7 @@ const ::google::protobuf::internal::ClassData* TrainerClientsResponse::GetClassD
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 46, 2> TrainerClientsResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> TrainerClientsResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -4948,8 +4992,8 @@ const ::_pbi::TcParseTable<0, 1, 0, 46, 2> TrainerClientsResponse::_table_ = {
     4294967294,  // skipmap
     offsetof(decltype(_table_), field_entries),
     1,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -4957,21 +5001,18 @@ const ::_pbi::TcParseTable<0, 1, 0, 46, 2> TrainerClientsResponse::_table_ = {
     ::_pbi::TcParser::GetTable<::fitness::TrainerClientsResponse>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated string clients = 1;
-    {::_pbi::TcParser::FastUR1,
+    // repeated .fitness.ClientInfo clients = 1;
+    {::_pbi::TcParser::FastMtR1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(TrainerClientsResponse, _impl_.clients_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // repeated string clients = 1;
+    // repeated .fitness.ClientInfo clients = 1;
     {PROTOBUF_FIELD_OFFSET(TrainerClientsResponse, _impl_.clients_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-  }},
-  // no aux_entries
-  {{
-    "\36\7\0\0\0\0\0\0"
-    "fitness.TrainerClientsResponse"
-    "clients"
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::fitness::ClientInfo>()},
+  }}, {{
   }},
 };
 
@@ -5001,12 +5042,15 @@ PROTOBUF_NOINLINE void TrainerClientsResponse::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // repeated string clients = 1;
-          for (int i = 0, n = this_._internal_clients_size(); i < n; ++i) {
-            const auto& s = this_._internal_clients().Get(i);
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "fitness.TrainerClientsResponse.clients");
-            target = stream->WriteString(1, s, target);
+          // repeated .fitness.ClientInfo clients = 1;
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_clients_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_clients().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -5034,13 +5078,11 @@ PROTOBUF_NOINLINE void TrainerClientsResponse::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated string clients = 1;
+            // repeated .fitness.ClientInfo clients = 1;
             {
-              total_size +=
-                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_clients().size());
-              for (int i = 0, n = this_._internal_clients().size(); i < n; ++i) {
-                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-                    this_._internal_clients().Get(i));
+              total_size += 1UL * this_._internal_clients_size();
+              for (const auto& msg : this_._internal_clients()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
           }
@@ -5056,7 +5098,8 @@ void TrainerClientsResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, 
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_clients()->MergeFrom(from._internal_clients());
+  _this->_internal_mutable_clients()->MergeFrom(
+      from._internal_clients());
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -5075,6 +5118,266 @@ void TrainerClientsResponse::InternalSwap(TrainerClientsResponse* PROTOBUF_RESTR
 }
 
 ::google::protobuf::Metadata TrainerClientsResponse::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class ClientInfo::_Internal {
+ public:
+};
+
+ClientInfo::ClientInfo(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:fitness.ClientInfo)
+}
+inline PROTOBUF_NDEBUG_INLINE ClientInfo::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::fitness::ClientInfo& from_msg)
+      : client_name_(arena, from.client_name_),
+        training_time_(arena, from.training_time_),
+        _cached_size_{0} {}
+
+ClientInfo::ClientInfo(
+    ::google::protobuf::Arena* arena,
+    const ClientInfo& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  ClientInfo* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:fitness.ClientInfo)
+}
+inline PROTOBUF_NDEBUG_INLINE ClientInfo::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : client_name_(arena),
+        training_time_(arena),
+        _cached_size_{0} {}
+
+inline void ClientInfo::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+ClientInfo::~ClientInfo() {
+  // @@protoc_insertion_point(destructor:fitness.ClientInfo)
+  SharedDtor(*this);
+}
+inline void ClientInfo::SharedDtor(MessageLite& self) {
+  ClientInfo& this_ = static_cast<ClientInfo&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.client_name_.Destroy();
+  this_._impl_.training_time_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* ClientInfo::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) ClientInfo(arena);
+}
+constexpr auto ClientInfo::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(ClientInfo),
+                                            alignof(ClientInfo));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull ClientInfo::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_ClientInfo_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &ClientInfo::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<ClientInfo>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &ClientInfo::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<ClientInfo>(), &ClientInfo::ByteSizeLong,
+            &ClientInfo::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(ClientInfo, _impl_._cached_size_),
+        false,
+    },
+    &ClientInfo::kDescriptorMethods,
+    &descriptor_table_store_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* ClientInfo::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 51, 2> ClientInfo::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::fitness::ClientInfo>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string training_time = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ClientInfo, _impl_.training_time_)}},
+    // string client_name = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ClientInfo, _impl_.client_name_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string client_name = 1;
+    {PROTOBUF_FIELD_OFFSET(ClientInfo, _impl_.client_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string training_time = 2;
+    {PROTOBUF_FIELD_OFFSET(ClientInfo, _impl_.training_time_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\22\13\15\0\0\0\0\0"
+    "fitness.ClientInfo"
+    "client_name"
+    "training_time"
+  }},
+};
+
+PROTOBUF_NOINLINE void ClientInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:fitness.ClientInfo)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.client_name_.ClearToEmpty();
+  _impl_.training_time_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* ClientInfo::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const ClientInfo& this_ = static_cast<const ClientInfo&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* ClientInfo::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const ClientInfo& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:fitness.ClientInfo)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string client_name = 1;
+          if (!this_._internal_client_name().empty()) {
+            const std::string& _s = this_._internal_client_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "fitness.ClientInfo.client_name");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string training_time = 2;
+          if (!this_._internal_training_time().empty()) {
+            const std::string& _s = this_._internal_training_time();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "fitness.ClientInfo.training_time");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:fitness.ClientInfo)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t ClientInfo::ByteSizeLong(const MessageLite& base) {
+          const ClientInfo& this_ = static_cast<const ClientInfo&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t ClientInfo::ByteSizeLong() const {
+          const ClientInfo& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:fitness.ClientInfo)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string client_name = 1;
+            if (!this_._internal_client_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_client_name());
+            }
+            // string training_time = 2;
+            if (!this_._internal_training_time().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_training_time());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void ClientInfo::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<ClientInfo*>(&to_msg);
+  auto& from = static_cast<const ClientInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:fitness.ClientInfo)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_client_name().empty()) {
+    _this->_internal_set_client_name(from._internal_client_name());
+  }
+  if (!from._internal_training_time().empty()) {
+    _this->_internal_set_training_time(from._internal_training_time());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ClientInfo::CopyFrom(const ClientInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:fitness.ClientInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void ClientInfo::InternalSwap(ClientInfo* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.client_name_, &other->_impl_.client_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.training_time_, &other->_impl_.training_time_, arena);
+}
+
+::google::protobuf::Metadata ClientInfo::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // ===================================================================

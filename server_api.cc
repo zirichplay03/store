@@ -107,7 +107,6 @@ grpc::Status FitnessServiceImpl::GetTrainers(grpc::ServerContext*, const fitness
 }
 
 
-// Логика входа
 grpc::Status FitnessServiceImpl::LoginUser(grpc::ServerContext*, const fitness::LoginRequest* request, fitness::LoginResponse* response) {
     const char* tables[] = {"users", "trainers"};
     const char* roles[] = {"client", "trainer"};
@@ -204,7 +203,7 @@ grpc::Status FitnessServiceImpl::GetTrainerClients(grpc::ServerContext* context,
     const char* sql = R"(
         SELECT u.full_name, b.training_time
         FROM bookings b
-        JOIN users u ON b.client_name = u.full_name  -- Изменено на client_name
+        JOIN users u ON b.client_id = u.id
         JOIN trainers t ON b.trainer_id = t.id
         WHERE t.login = ?
     )";
@@ -217,23 +216,18 @@ grpc::Status FitnessServiceImpl::GetTrainerClients(grpc::ServerContext* context,
     sqlite3_bind_text(stmt, 1, request->trainer_name().c_str(), -1, SQLITE_STATIC);
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        // Создаем строку для каждого клиента, содержащую имя и время тренировки
-        std::string client_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));  // Имя клиента
-        std::string training_time = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));  // Время тренировки
+        std::string client_name = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+        std::string training_time = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
 
-        // Конкатенируем имя и время тренировки
-        std::string client_info = client_name + " - " + training_time;
-
-        // Логируем информацию о клиенте
-        std::cout << "Clients: " << client_info << std::endl;
-
-        // Добавляем информацию о клиенте в ответ
-        response->add_clients(client_info);
+        auto* client_info = response->add_clients();
+        client_info->set_client_name(client_name);
+        client_info->set_training_time(training_time);
     }
 
     sqlite3_finalize(stmt);
     return grpc::Status::OK;
 }
+
 
 // Метод для записи на тренировку
 grpc::Status FitnessServiceImpl::BookTraining(grpc::ServerContext* context, const fitness::TrainingBookingRequest* request, fitness::TrainingBookingResponse* response) {
