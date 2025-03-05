@@ -49,15 +49,14 @@ CREATE TABLE IF NOT EXISTS schedule (
                                         FOREIGN KEY (trainer_id) REFERENCES trainers(id)
 );
 
--- Таблица записей на тренировки
+-- Таблица записей на тренировки с именами клиентов и тренеров
 CREATE TABLE IF NOT EXISTS bookings (
                                         id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                        client_id INTEGER,
-                                        trainer_id INTEGER,
-                                        training_time TEXT,  -- Время тренировки
-                                        FOREIGN KEY (client_id) REFERENCES users(id),
-                                        FOREIGN KEY (trainer_id) REFERENCES trainers(id)
+                                        client_name TEXT NOT NULL,  -- Имя клиента
+                                        trainer_name TEXT NOT NULL,  -- Имя тренера
+                                        training_time TEXT NOT NULL  -- Время тренировки
 );
+
 
 -- Заполнение таблицы тренеров
 INSERT INTO trainers (login, password, full_name) VALUES

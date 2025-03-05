@@ -201,11 +201,9 @@ grpc::Status FitnessServiceImpl::GetTrainerSchedule(grpc::ServerContext* context
 
 grpc::Status FitnessServiceImpl::GetTrainerClients(grpc::ServerContext* context, const fitness::TrainerClientsRequest* request, fitness::TrainerClientsResponse* response) {
     const char* sql = R"(
-        SELECT u.full_name, b.training_time
-        FROM bookings b
-        JOIN users u ON b.client_id = u.id
-        JOIN trainers t ON b.trainer_id = t.id
-        WHERE t.login = ?
+        SELECT client_name, training_time
+        FROM bookings
+        WHERE trainer_name = ?
     )";
 
     sqlite3_stmt* stmt;
@@ -229,9 +227,10 @@ grpc::Status FitnessServiceImpl::GetTrainerClients(grpc::ServerContext* context,
 }
 
 
+
 // Метод для записи на тренировку
 grpc::Status FitnessServiceImpl::BookTraining(grpc::ServerContext* context, const fitness::TrainingBookingRequest* request, fitness::TrainingBookingResponse* response) {
-    const char* sql = "INSERT INTO bookings (trainer_id, client_id, training_time) VALUES ((SELECT id FROM trainers WHERE full_name = ?), (SELECT id FROM users WHERE full_name = ?), ?)";
+    const char* sql = "INSERT INTO bookings (trainer_name, client_name, training_time) VALUES (?, ?, ?)";
     sqlite3_stmt* stmt;
     if (sqlite3_prepare_v2(db_, sql, -1, &stmt, nullptr) != SQLITE_OK) {
         response->set_success(false);
@@ -254,6 +253,7 @@ grpc::Status FitnessServiceImpl::BookTraining(grpc::ServerContext* context, cons
     sqlite3_finalize(stmt);
     return grpc::Status::OK;
 }
+
 
 // Пополнение баланса клиента
 grpc::Status FitnessServiceImpl::AddBalance(grpc::ServerContext* context, const fitness::BalanceRequest* request, fitness::BalanceResponse* response) {
